@@ -6,9 +6,9 @@ class CommandHandler
 public:
     CommandHandler();
 
-    void processUserInput(const std::string& userInput);
+    static void processUserInput(const std::string& userInput);
 private:
-    int parsePortFromCommand(const std::string& userInput, const std::string& command);
+    static int parsePortFromCommand(const std::string& userInput, const std::string& command);
     
 };
 

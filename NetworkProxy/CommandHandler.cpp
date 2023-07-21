@@ -4,7 +4,23 @@
 
 void CommandHandler::processUserInput(const std::string& userInput)
 {
-    
+    if(userInput.find("start_tcp") != std::string::npos)
+    {
+        const int port = parsePortFromCommand(userInput, "start_tcp");
+
+        if(port != -1)
+        {
+            std::cout << "TCP proxy starting on port " << port << std::endl;
+        }
+    }
+    else if (userInput.find("start_udp") != std::string::npos) 
+    {
+        const int port = parsePortFromCommand(userInput, "start_udp");
+        if (port != -1) {
+         
+            std::cout << "UDP proxy starting on port " << port << std::endl;
+        }
+    }
     
 }
 
@@ -14,6 +30,7 @@ int CommandHandler::parsePortFromCommand(const std::string& userInput, const std
     const size_t portPos = commandPos + command.length() + 1;
 
     if (portPos < userInput.length()) {
+
         const std::string portStr = userInput.substr(portPos);
 
         try {
